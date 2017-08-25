@@ -71,6 +71,7 @@ app.TodoView = Backbone.View.extend({
   },
   markAsDone: function () {
     this.model.toggle();
+    app.appView.addAll();     // to update the view as soon as an element is marked as done
   },
   destroy: function () {
     this.model.destroy();
