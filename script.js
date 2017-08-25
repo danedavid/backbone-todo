@@ -20,7 +20,7 @@ app.Todo = Backbone.Model.extend({
 // Collection
 app.TodoList = Backbone.Collection.extend({
   model: app.Todo,
-  localStorage: new Store("backbone-todo"),
+  localStorage: new Store("backbone-local"),
   completed: function () {
     return this.filter( function (todo) {
       return todo.get('completed');
@@ -39,12 +39,16 @@ app.TodoView = Backbone.View.extend({
   myTemplate: _.template($("#item-template").html()),
   render: function () {
     this.$el.html(this.myTemplate(this.model.toJSON()));
+    if( this.model.get('completed') === true ) {
+      this.$("label").addClass("strike-through");
+    }
     this.input = this.$(".edit");
     return this;
   },
   initialize: function () {
     this.model.on('change', this.render, this);
     this.model.on('destroy', this.remove, this);
+    console.log("TodoView initialized with " + this.model.get('title'));
   },
   events: {
     'dblclick label': 'edit',
@@ -71,6 +75,7 @@ app.TodoView = Backbone.View.extend({
   },
   markAsDone: function () {
     this.model.toggle();
+    app.appView.addAll();     // to update the view as soon as an element is marked as done
   },
   destroy: function () {
     this.model.destroy();
@@ -84,6 +89,7 @@ app.AppView = Backbone.View.extend({
     app.toDoList.on('add', this.addAll, this);
     app.toDoList.on('reset', this.addAll, this);
     app.toDoList.fetch();       // to load from localStorage
+    console.log("AppView initialized");
   },
   events: {
     'keypress #new-todo': 'createTodoOnEnter',
@@ -129,6 +135,7 @@ app.AppRouter = Backbone.Router.extend({
   setFilter: function (params) {
     window.filter = params.trim() || '';
     app.toDoList.trigger('reset');
+    console.log("setFilter()");
   }
 });
 
