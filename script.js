@@ -45,6 +45,7 @@ app.TodoView = Backbone.View.extend({
   initialize: function () {
     this.model.on('change', this.render, this);
     this.model.on('destroy', this.remove, this);
+    console.log("TodoView initialized with " + this.model.get('title'));
   },
   events: {
     'dblclick label': 'edit',
@@ -85,6 +86,7 @@ app.AppView = Backbone.View.extend({
     app.toDoList.on('add', this.addAll, this);
     app.toDoList.on('reset', this.addAll, this);
     app.toDoList.fetch();       // to load from localStorage
+    console.log("AppView initialized");
   },
   events: {
     'keypress #new-todo': 'createTodoOnEnter',
@@ -130,6 +132,7 @@ app.AppRouter = Backbone.Router.extend({
   setFilter: function (params) {
     window.filter = params.trim() || '';
     app.toDoList.trigger('reset');
+    console.log("setFilter()");
   }
 });
 
