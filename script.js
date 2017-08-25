@@ -39,6 +39,9 @@ app.TodoView = Backbone.View.extend({
   myTemplate: _.template($("#item-template").html()),
   render: function () {
     this.$el.html(this.myTemplate(this.model.toJSON()));
+    if( this.model.get('completed') === true ) {
+      this.$("label").addClass("strike-through");
+    }
     this.input = this.$(".edit");
     return this;
   },

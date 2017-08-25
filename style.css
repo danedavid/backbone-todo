@@ -81,7 +81,12 @@ a {
   border-radius: 10px;
   font-family: 'Bad Script', cursive;
   font-size: 22px;
+  font-weight: bold;
   position: relative;
+}
+
+.strike-through {
+  text-decoration: line-through;
 }
 
 .toggle, .remove {
