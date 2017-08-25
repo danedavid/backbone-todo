@@ -1,0 +1,124 @@
+/* styling for index.html */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #541D28;
+}
+
+a {
+  color: #130004;
+  text-decoration: none;
+}
+
+#todoapp {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+#header h1 {
+  color: #A2727C;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 54px;
+  margin: 10px 0;
+}
+
+#new-todo {
+  width: 600px;
+  border: 2px solid #360710;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'Bad Script', cursive;
+  font-size: 32px;
+  color: transparent;
+  text-shadow: 0 0 0 #222222;
+  opacity: 0.5;
+  outline: 0;
+}
+
+#new-todo:focus {
+  opacity: 0.8;
+}
+
+.nav-bar {
+  margin-top: 10px;
+}
+
+.nav-button {
+  display: inline-block;
+  width: 100px;
+  background-color: #663D45;
+  opacity: 0.8;
+}
+
+.nav-button:hover {
+  opacity: 1;
+}
+
+#main {
+  width: 100%;
+}
+
+#todo-list {
+  list-style-type: none;
+  color: #A2727C;
+  width: 60%;
+  margin: 20px auto;
+  padding: 0;
+}
+
+#todo-list li {
+  display: block;
+}
+
+.view {
+  background-color: #360710;
+  margin-top: 5px;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-family: 'Bad Script', cursive;
+  font-size: 22px;
+  position: relative;
+}
+
+.toggle, .remove {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toggle {
+  left: 10px;
+}
+
+.remove {
+  right: 10px;
+  font-size: inherit;
+  font-family: none;
+  cursor: pointer;
+}
+
+.edit {
+  border: 2px solid #360710;
+  border-radius: 10px;
+  padding: 0px 20px;
+  font-family: 'Bad Script', cursive;
+  font-size: 18px;
+  opacity: 0.5;
+  outline: 0;
+}
+
+#todo-list input.edit {
+  display: none;
+}
+
+#todo-list .editing label {
+  display: none;
+}
+
+#todo-list .editing input.edit {
+  display: inline;
+}
